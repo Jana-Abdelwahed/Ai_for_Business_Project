@@ -43,6 +43,7 @@ Ai_for_Business_Project/
 │   └── chroma_db/           # Persisted Chroma vector database
 ├── .env                     # Environment variables (API keys)
 └── requirements.txt         # Project dependencies
+---
 
 ⚙️ Installation & Setup
 1. Clone the Repository
