@@ -1,0 +1,38 @@
+[
+  {
+    "id": "LAW_159_1981_ARTICLE_1",
+    "law_title": "Companies Law No. 159 of 1981",
+    "category": "Company Formation & Legal Structures",
+    "article": "General Provisions",
+    "content_en": "Law No. 159 of 1981 governs Joint Stock Companies, Partnerships Limited by Shares, Limited Liability Companies (LLCs), and Single Person Companies (SPCs) in Egypt. An LLC must have at least two partners (or one partner under SPC rules) and partners are liable only up to the value of their share capital.",
+    "content_ar": "ينظم القانون رقم 159 لسنة 1981 شركات المساهمة، وشركات التوصية بالأسهم، والشركات ذات المسؤولية المحدودة، وشركات الشخص الواحد في مصر. وتقتصر مسؤولية الشركاء فيها على حدود حصصهم في رأس المال.",
+    "source_url": "https://gafi.gov.eg/en/contenttemplate/ad17cbdb-f2cd-4521-ad97-78d0fae50ec8"
+  },
+  {
+    "id": "LAW_72_2017_ARTICLE_11",
+    "law_title": "Investment Law No. 72 of 2017",
+    "category": "Investment Incentives & Special Zones",
+    "article": "Article 11 - General & Special Incentives",
+    "content_en": "Investment projects established inside Egypt under Law 72 receive a 30% to 50% tax deduction on net profits for the initial investment cost in designated investment zones (Sector A and Sector B), alongside exemption from stamp duty taxes on contract registration for 5 years.",
+    "content_ar": "تمنح المشروعات الاستثمارية المقامة وفقا لقانون الاستثمار رقم 72 لسنة 2017 خصما استثماريا يتراوح بين 30% إلى 50% من التكاليف الاستثمارية الخاضعة للضريبة في المناطق الاستثمارية المستهدفة.",
+    "source_url": "https://www.gafi.gov.eg/English/StartaBusiness/Laws-and-Regulations"
+  },
+  {
+    "id": "LAW_152_2020_ARTICLE_3",
+    "law_title": "MSME Development Law No. 152 of 2020",
+    "category": "Small Enterprises & Tax Schemes",
+    "article": "Simplified Flat Tax Scheme for Micro & Small Enterprises",
+    "content_en": "Projects with annual sales under 250,000 EGP pay a flat tax of 1,000 EGP annually. Projects with turnover between 500,000 EGP and 1,000,000 EGP pay a simplified flat tax of 0.5% to 1% of total annual sales, bypassing complex accounting requirements.",
+    "content_ar": "ينص قانون تنمية المشروعات رقم 152 لسنة 2020 على نظام ضريبي مبسط: المشروعات التي يقل حجم أعمالها السنوي عن 250 ألف جنيه تدفع ضريبة قطعية 1000 جنيه سنويا، والمشروعات بين 500 ألف ومليون جنيه تدفع 0.5% إلى 1% من حجم المبيعات.",
+    "source_url": "https://www.informea.org/en/content/legislation/law-no-152-2020-promulgating-micro-small-and-medium-enterprises-development-law"
+  },
+  {
+    "id": "GAFI_INCORP_GUIDE_2026",
+    "law_title": "GAFI E-Services Regulation & Official Procedures",
+    "category": "Official Incorporation Steps",
+    "article": "Step-by-Step E-Incorporation on GAFI Portal",
+    "content_en": "To incorporate a company online through GAFI (General Authority for Investment): 1. Reserve a non-confusing trade name online. 2. Submit founder IDs/passports and clear powers of attorney. 3. Deposit required capital in a licensed Egyptian bank account. 4. Obtain the preliminary incorporation certificate and issue the Commercial Register (Sijil Tijari) and Tax Card (Bitaqa Daribiya).",
+    "content_ar": "تأسيس الشركة إلكترونيا عبر الهيئة العامة للاستثمار (GAFI): 1. حجز الاسم التجاري عدم التباس. 2. تقديم إثبات شخصية الشركاء والتوكيلات الرسمية. 3. إيداع رأس المال في بنك مصري مرخص. 4. استخراج السجل التجاري والبطاقة الضريبية.",
+    "source_url": "https://gafi.gov.eg/en/Pages/default.aspx"
+  }
+]

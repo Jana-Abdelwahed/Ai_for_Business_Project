@@ -1,0 +1,23 @@
+# LangChain Core & Integrations
+langchain>=0.2.0
+langchain-community>=0.2.0
+langchain-google-genai
+langchain-chroma
+
+# LLM & Embeddings API
+google-genai
+langchain-huggingface
+sentence-transformers
+
+# Vector Store
+chromadb
+
+# Data Processing & File Loaders
+pandas
+pypdf
+python-dotenv
+
+# Web Frameworks (Frontend & Backend)
+streamlit
+fastapi
+uvicorn
