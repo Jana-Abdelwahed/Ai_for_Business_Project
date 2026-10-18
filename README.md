@@ -8,21 +8,21 @@ Styled with an official **GAFI (General Authority for Investment and Free Zones)
 
 ## 🚀 Key Features
 
-* **Official Regulations Support:** Query information on Egyptian Company Law (Law 159/1981), MSME Development Law (Law 152/2020), and GAFI registration procedures.
-* **Venture Capital Directory:** Access structured data on Egyptian VCs, accelerators, and ticket sizes.
-* **Hybrid Architecture:** Powered by **Google Gemini** for generation and a **Local HuggingFace embedding model (`all-MiniLM-L6-v2`)** for fast, reliable, and cost-free local vector embeddings.
-* **ChromaDB Vector Store:** Efficiently retrieves contextually relevant legal clauses and funding details.
-* **Custom Streamlit Frontend:** Clean, branded web interface featuring dark navy styling and golden highlights.
+- **Official Regulations Support:** Query information on Egyptian Company Law (Law 159/1981), MSME Development Law (Law 152/2020), and GAFI registration procedures.
+- **Venture Capital Directory:** Access structured data on Egyptian VCs, accelerators, and ticket sizes.
+- **Hybrid Architecture:** Powered by **Google Gemini** for generation and a **Local HuggingFace embedding model (`all-MiniLM-L6-v2`)** for fast, reliable, and cost-free local vector embeddings.
+- **ChromaDB Vector Store:** Efficiently retrieves contextually relevant legal clauses and funding details.
+- **Custom Streamlit Frontend:** Clean, branded web interface featuring dark navy styling and golden highlights.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Orchestration & RAG:** LangChain (LCEL)
-* **Vector Database:** ChromaDB
-* **Embeddings:** HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`)
-* **LLM Generation:** Google Gemini (`gemini-3.8-flash`)
-* **Frontend:** Streamlit with custom CSS theme
+- **Orchestration & RAG:** LangChain (LCEL)
+- **Vector Database:** ChromaDB
+- **Embeddings:** HuggingFace (`sentence-transformers/all-MiniLM-L6-v2`)
+- **LLM Generation:** Google Gemini (`gemini-3.8-flash`)
+- **Frontend:** Streamlit with custom CSS theme
 
 ---
 
@@ -43,36 +43,66 @@ Ai_for_Business_Project/
 │   └── chroma_db/           # Persisted Chroma vector database
 ├── .env                     # Environment variables (API keys)
 └── requirements.txt         # Project dependencies
+```
+
 ---
 
-⚙️ Installation & Setup
-1. Clone the Repository
-Bash
-git clone [https://github.com/YOUR_USERNAME/Egypt_Business_RAG_Assistant.git](https://github.com/YOUR_USERNAME/Egypt_Business_RAG_Assistant.git)
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/YOUR_USERNAME/Egypt_Business_RAG_Assistant.git
 cd Egypt_Business_RAG_Assistant
-2. Create and Activate a Virtual Environment
-Bash
+```
+
+### 2. Create and Activate a Virtual Environment
+```bash
 python -m venv .venv
+
 # On Windows (PowerShell):
 .venv\Scripts\Activate.ps1
+
 # On macOS/Linux:
 source .venv/bin/activate
-3. Install Dependencies
-Bash
-pip install -r requirements.txt
-4. Configure Environment Variables
-Create a .env file in the root directory of your project and add your Google Gemini API key:
+```
 
-Code snippet
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure Environment Variables
+Create a `.env` file in the root directory of your project and add your Google Gemini API key:
+
+```env
 GOOGLE_API_KEY="your_actual_google_gemini_api_key_here"
 GOOGLE_MODEL="gemini-3.8-flash"
+```
 
-💡 Example Queries to Try
-"What are the steps to register an LLC via GAFI?"
+---
 
-"What tax benefits are provided under MSME Law 152/2020?"
+## 🏃‍♂️ How to Run the Project
 
-"Which venture capital firms in Egypt fund Pre-Seed fintech startups and what are their ticket sizes?"
+### Step 1: Build the Vector Database
+```bash
+python Backend/document_loader.py
+```
 
-📄 License
+### Step 2: Launch the Streamlit Frontend
+```bash
+streamlit run Frontend/app.py
+```
+
+---
+
+## 💡 Example Queries to Try
+
+- *"What are the steps to register an LLC via GAFI?"*
+- *"What tax benefits are provided under MSME Law 152/2020?"*
+- *"Which venture capital firms in Egypt fund Pre-Seed fintech startups and what are their ticket sizes?"*
+
+---
+
+## 📄 License
+
 This project is open-source and developed for educational and entrepreneurial empowerment in Egypt.
