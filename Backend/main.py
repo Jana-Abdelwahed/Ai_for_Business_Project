@@ -9,15 +9,27 @@ from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
+
+def _get_gemini_api_key() -> str | None:
+    return os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
+
+
+def _get_model_name() -> str:
+    configured = os.getenv("GOOGLE_MODEL") or os.getenv("GEMINI_MODEL")
+    if configured:
+        return configured
+    return "gemini-3.5-flash-lite"
+
+
 def query_rag_system(question: str):
     if not question or not question.strip():
         return "Error: Please provide a valid question."
 
-    api_key = os.getenv("GOOGLE_API_KEY")
+    api_key = _get_gemini_api_key()
     if not api_key:
         return (
-            "Error: GOOGLE_API_KEY environment variable is not set. "
-            "Please add it before running the assistant."
+            "Error: GOOGLE_API_KEY / GEMINI_API_KEY environment variable is not set. "
+            "Please add a valid Gemini API key before running the assistant."
         )
 
     # 1. Define persist directory for ChromaDB
@@ -31,19 +43,23 @@ def query_rag_system(question: str):
     # 2. Initialize local embeddings to load the vector store
     embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     vector_store = Chroma(
-        persist_directory=persist_directory, 
-        embedding_function=embeddings
+        persist_directory=persist_directory,
+        embedding_function=embeddings,
     )
 
     # 3. Create a retriever from the vector store
     retriever = vector_store.as_retriever(
-        search_type="similarity", 
-        search_kwargs={"k": 3}
+        search_type="similarity",
+        search_kwargs={"k": 3},
     )
 
     # 4. Initialize the Gemini LLM for text generation
-    model_name = os.getenv("GOOGLE_MODEL", "gemini-3.8-flash")
-    llm = ChatGoogleGenerativeAI(model=model_name, temperature=0.2)
+    model_name = _get_model_name()
+    llm = ChatGoogleGenerativeAI(
+        model=model_name,
+        temperature=0.2,
+        google_api_key=api_key,
+    )
 
     # 5. Define the prompt template for Egyptian business/legal advisory
     template = """You are an expert legal, regulatory, and business advisor assistant for entrepreneurs in Egypt. 
@@ -57,14 +73,13 @@ Context:
 User Question: {question}
 
 Answer:"""
-    
+
     prompt = ChatPromptTemplate.from_template(template)
 
     # 6. Build the RAG chain using LangChain Expression Language (LCEL)
     def format_docs(docs):
-      return '\n\n'.join(doc.page_content for doc in docs)
+        return '\n\n'.join(doc.page_content for doc in docs)
 
-    # FIXED: Changed "pass_through" to "question" to match the prompt template
     chain = (
         {
             'context': retriever | format_docs,
@@ -75,10 +90,30 @@ Answer:"""
         | StrOutputParser()
     )
 
-    # 7. Execute the chain with the user's question
-    # Note: LCEL passes the question into prompt via the dictionary key mapping
-    response = chain.invoke(question)
-    return response
+    try:
+        response = chain.invoke(question)
+        return response
+    except Exception as exc:
+        error_message = str(exc)
+        lowered = error_message.lower()
+
+        if "unauthenticated" in lowered or "api key not valid" in lowered or "authentication" in lowered:
+            return (
+                "Authentication failed: the configured Gemini API key is invalid or expired. "
+                "Please update GOOGLE_API_KEY / GEMINI_API_KEY with a valid Google AI Studio key."
+            )
+        if "model" in lowered and (
+            "not found" in lowered
+            or "not_found" in lowered
+            or "no longer available" in lowered
+            or "unsupported" in lowered
+            or "invalid" in lowered
+        ):
+            return (
+                f"The configured Gemini model '{model_name}' is unavailable. "
+                "Update GOOGLE_MODEL / GEMINI_MODEL to a supported Gemini model such as 'gemini-3.8-flash'."
+            )
+        return f"Error generating the answer: {error_message}"
 
 if __name__ == "__main__":
     # Test query

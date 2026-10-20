@@ -2,11 +2,12 @@ import os
 import sys
 import streamlit as st
 
-# Add backend directory to python path so we can import query_rag_system
-sys.path.append(
-    os.path.abspath(os.path.join(os.path.dirname(__file__), "../Backend"))
-)
-from main import query_rag_system
+# Add project root to python path so the backend package is importable
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
+
+from Backend.main import query_rag_system
 
 # Page Configuration
 st.set_page_config(
